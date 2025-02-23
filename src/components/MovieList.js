@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import MovieCard from "./MovieCard";
 
 const MovieList = ({ movies, addMovie }) => {
@@ -61,7 +62,14 @@ const MovieList = ({ movies, addMovie }) => {
       </form>
       <div className="movie-list">
         {movies.map((movie, index) => (
-          <MovieCard key={index} movie={movie} />
+          <div key={index} className="movie-card">
+            <Link to={`/movie/${movie.title}`}>
+              <img src={movie.posterURL} alt={movie.title} />
+              <h3>{movie.title}</h3>
+            </Link>
+            <p>{movie.description}</p>
+            <p>Rating: {movie.rating}</p>
+          </div>
         ))}
       </div>
     </div>
